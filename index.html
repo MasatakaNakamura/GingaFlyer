@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銀河ソフトウェア株式会社 新卒採用説明会</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0d1221 0%, #1a1b41 100%);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flyer {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: glow 3s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 10px 30px rgba(255, 125, 0, 0.2);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(255, 125, 0, 0.6);
+            }
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .planet-1 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #ff7d00, #ffa64d);
+            top: -30px;
+            right: -30px;
+            box-shadow: 0 0 30px rgba(255, 125, 0, 0.6);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .planet-2 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #3e64ff, #5edfff);
+            bottom: -20px;
+            left: -20px;
+            box-shadow: 0 0 20px rgba(94, 223, 255, 0.6);
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .company-name {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(45deg, #ff7d00, #ffcc80);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 125, 0, 0.3);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .event-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: #fff;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 125, 0, 0.3);
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            color: #ff9f43;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255, 159, 67, 0.5);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .details-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .details-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .icon {
+            margin-right: 15px;
+            background: #ff9f43;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .icon svg {
+            width: 16px;
+            height: 16px;
+            fill: #fff;
+        }
+        
+        .program-list {
+            list-style-type: none;
+            padding: 0;
+            counter-reset: program-counter;
+        }
+        
+        .program-list li {
+            margin-bottom: 15px;
+            padding-left: 45px;
+            position: relative;
+        }
+        
+        .program-list li::before {
+            counter-increment: program-counter;
+            content: counter(program-counter);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ff9f43;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .apply-button {
+            display: block;
+            background: linear-gradient(45deg, #ff7d00, #ffcc80);
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            padding: 15px 30px;
+            border-radius: 30px;
+            margin: 30px auto 0;
+            max-width: 300px;
+            box-shadow: 0 10px 20px rgba(255, 125, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .apply-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 125, 0, 0.5);
+        }
+        
+        .apply-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            animation: shine 3s forwards infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .flyer {
+                padding: 30px 20px;
+            }
+            
+            .company-name {
+                font-size: 2.5rem;
+            }
+            
+            .event-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stars" id="stars"></div>
+        <div class="flyer">
+            <div class="planet planet-1"></div>
+            <div class="planet planet-2"></div>
+            
+            <div class="header">
+                <h1 class="company-name">銀河ソフトウェア株式会社</h1>
+                <h2 class="event-title">2025年度 新卒採用説明会</h2>
+            </div>
+            
+            <div class="section">
+                <h2>開催概要</h2>
+                <ul class="details-list">
+                    <li>
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>日時：</strong>2025年3月24日（月）14:00～16:00
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>場所：</strong>オンライン開催（Zoom）<br>
+                            <small>※お申し込み後、参加URLをお送りします</small>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>対象：</strong>2026年卒業予定の学生の皆さま
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>プログラム</h2>
+                <ul class="program-list">
+                    <li><strong>社長挨拶</strong>：代表取締役社長より会社の理念と未来のビジョンについてお話します</li>
+                    <li><strong>会社説明会</strong>：事業内容や職種紹介、社内環境などを詳しくご紹介します</li>
+                    <li><strong>質疑応答</strong>：皆さんの疑問に社員が直接お答えします</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>参加方法</h2>
+                <p>下記の申し込みボタンから専用フォームにアクセスし、必要事項をご記入ください。</p>
+                <p>応募締切：2025年3月20日（木）17:00まで</p>
+                <a href="https://ginag.co.jp" class="apply-button" target="_blank">申し込みフォームへ</a>
+            </div>
+            
+            <div class="footer">
+                <p>お問い合わせ：銀河ソフトウェア株式会社 採用担当：中村匡隆</p>
+                <p>※ご不明な点がございましたら、お気軽にお問い合わせください。</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 星を作成する関数
+        function createStars() {
+            const stars = document.getElementById('stars');
+            const count = 150;
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // ランダムな位置とサイズを設定
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                
+                // ランダムなアニメーション
